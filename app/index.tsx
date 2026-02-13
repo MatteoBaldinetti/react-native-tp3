@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 
 export default function Index() {
   const router = useRouter();
@@ -12,6 +12,14 @@ export default function Index() {
         alignItems: "center",
       }}
     >
+      <Text style={{ fontSize: 24, fontWeight: "bold", marginBottom: 20 }}>
+        Bienvenue
+      </Text>
+      <Image
+        source={require("../assets/images/home_image.jpg")}
+        style={{ width: 250, height: 250, marginBottom: 20 }}
+        resizeMode="contain"
+      />
       <TouchableOpacity
         onPress={() => router.push("/lyceeCreteil")}
         style={{

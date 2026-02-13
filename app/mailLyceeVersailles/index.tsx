@@ -32,7 +32,12 @@ export default function MailLyceeVersailles() {
                             borderRadius: 8,
                         }}
                     >
-                        <Text style={{ fontSize: 16 }}>{item.nom_etablissement} : {item.mail}</Text>
+                        <Text style={{ fontSize: 16 }}>
+                            {item.nom_etablissement} :{" "}
+                            <Text style={{ fontWeight: "bold", fontStyle: "italic" }}>
+                                {item.mail}
+                            </Text>
+                        </Text>
                     </View>
                 )}
             />
