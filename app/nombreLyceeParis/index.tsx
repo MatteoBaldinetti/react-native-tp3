@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-import { Text, View } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useRouter } from "expo-router";
 import lyceeData from "../../data/lycees-donnees-generales-v1.json";
 
 export default function NombreLyceeTotal() {
+    const router = useRouter();
+
     const [data, setData] = useState<any[]>([]);
 
     useEffect(() => {
@@ -10,21 +14,37 @@ export default function NombreLyceeTotal() {
     }, []);
 
     return (
-        <View style={{ flex: 1, padding: 16, backgroundColor: "#fff" }}>
-            <Text style={{ fontSize: 22, fontWeight: "bold", marginBottom: 16 }}>
-                Nombre total de lycées
-            </Text>
+        <SafeAreaView style={{ flex: 1 }}>
+            <View style={{ flex: 1, padding: 16, backgroundColor: "#fff" }}>
+                <TouchableOpacity
+                    onPress={() => router.back()}
+                    style={{
+                        padding: 12,
+                        backgroundColor: "#4F46E5",
+                        borderRadius: 8,
+                        marginBottom: 10,
+                        paddingVertical: 8,
+                        paddingHorizontal: 12,
+                        alignSelf: "flex-start",
+                    }}
+                >
+                    <Text style={{ fontSize: 14, color: "white", fontWeight: "bold" }}>← Retour</Text>
+                </TouchableOpacity>
+                <Text style={{ fontSize: 22, fontWeight: "bold", marginBottom: 16 }}>
+                    Nombre total de lycées
+                </Text>
 
-            <View
-                style={{
-                    padding: 12,
-                    marginBottom: 10,
-                    backgroundColor: "#f0f0f0",
-                    borderRadius: 8,
-                }}
-            >
-                <Text style={{ fontSize: 16 }}>Total : {data.length}</Text>
+                <View
+                    style={{
+                        padding: 12,
+                        marginBottom: 10,
+                        backgroundColor: "#f0f0f0",
+                        borderRadius: 8,
+                    }}
+                >
+                    <Text style={{ fontSize: 16 }}>Total : {data.length}</Text>
+                </View>
             </View>
-        </View>
+        </SafeAreaView>
     );
 }
